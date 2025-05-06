@@ -1,17 +1,13 @@
 services:
   central:
-    build:
-      context: .
-      dockerfile: Dockerfile.central
+    image: benjamin6942/meeting-manager-central:latest
     volumes:
       - ./config:/config
     ports:
       - "5001:5000"
 
   alice:
-    build:
-      context: .
-      dockerfile: Dockerfile.employee
+    image: benjamin6942/meeting-manager-employee:latest
     environment:
       - EMP_NAME=Alice
       - EMP_PORT=6001
@@ -23,9 +19,7 @@ services:
       - ./data/Alice:/app/data
 
   bob:
-    build:
-      context: .
-      dockerfile: Dockerfile.employee
+    image: benjamin6942/meeting-manager-employee:latest
     environment:
       - EMP_NAME=Bob
       - EMP_PORT=6002
@@ -37,9 +31,7 @@ services:
       - ./data/Bob:/app/data
 
   carol:
-    build:
-      context: .
-      dockerfile: Dockerfile.employee
+    image: benjamin6942/meeting-manager-employee:latest
     environment:
       - EMP_NAME=Carol
       - EMP_PORT=6003
@@ -51,9 +43,7 @@ services:
       - ./data/Carol:/app/data
 
   dave:
-    build:
-      context: .
-      dockerfile: Dockerfile.employee
+    image: benjamin6942/meeting-manager-employee:latest
     environment:
       - EMP_NAME=Dave
       - EMP_PORT=6004
@@ -65,9 +55,7 @@ services:
       - ./data/Dave:/app/data
 
   eve:
-    build:
-      context: .
-      dockerfile: Dockerfile.employee
+    image: benjamin6942/meeting-manager-employee:latest
     environment:
       - EMP_NAME=Eve
       - EMP_PORT=6005

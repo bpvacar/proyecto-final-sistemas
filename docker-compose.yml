@@ -1,0 +1,79 @@
+services:
+  central:
+    build:
+      context: .
+      dockerfile: Dockerfile.central
+    volumes:
+      - ./config:/config
+    ports:
+      - "5001:5000"
+
+  alice:
+    build:
+      context: .
+      dockerfile: Dockerfile.employee
+    environment:
+      - EMP_NAME=Alice
+      - EMP_PORT=6001
+    ports:
+      - "6001:6001"
+    depends_on:
+      - central
+    volumes:
+      - ./data/Alice:/app/data
+
+  bob:
+    build:
+      context: .
+      dockerfile: Dockerfile.employee
+    environment:
+      - EMP_NAME=Bob
+      - EMP_PORT=6002
+    ports:
+      - "6002:6002"
+    depends_on:
+      - central
+    volumes:
+      - ./data/Bob:/app/data
+
+  carol:
+    build:
+      context: .
+      dockerfile: Dockerfile.employee
+    environment:
+      - EMP_NAME=Carol
+      - EMP_PORT=6003
+    ports:
+      - "6003:6003"
+    depends_on:
+      - central
+    volumes:
+      - ./data/Carol:/app/data
+
+  dave:
+    build:
+      context: .
+      dockerfile: Dockerfile.employee
+    environment:
+      - EMP_NAME=Dave
+      - EMP_PORT=6004
+    ports:
+      - "6004:6004"
+    depends_on:
+      - central
+    volumes:
+      - ./data/Dave:/app/data
+
+  eve:
+    build:
+      context: .
+      dockerfile: Dockerfile.employee
+    environment:
+      - EMP_NAME=Eve
+      - EMP_PORT=6005
+    ports:
+      - "6005:6005"
+    depends_on:
+      - central
+    volumes:
+      - ./data/Eve:/app/data

@@ -1,0 +1,4 @@
+FROM openjdk:17-jdk
+WORKDIR /app
+COPY target/meeting-manager-1.0.0.jar app.jar
+ENTRYPOINT ["sh","-c","java -cp app.jar com.example.employee.EmployeeServer $EMP_NAME $EMP_PORT"]

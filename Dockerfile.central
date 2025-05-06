@@ -1,0 +1,4 @@
+FROM openjdk:17-jdk
+WORKDIR /app
+COPY target/meeting-manager-1.0.0.jar app.jar
+CMD ["java","-cp","app.jar","com.example.central.CentralServer","/config/employees.properties","5000"]
